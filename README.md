@@ -1,7 +1,7 @@
 # Mercado
 Sistema de vendas por inventário | 1.5.2
 
-Se resume em, venda e divulgação de itens por um invetário/bau virtual, onde o fregues compra o que desejar.
+Se resume em, venda e divulgação de itens por um invetário/bau virtual, onde o freguês compra o que desejar.
 
 ## Permissões
 
@@ -12,7 +12,7 @@ Se resume em, venda e divulgação de itens por um invetário/bau virtual, onde 
 ## Alteração recente ##
  
 ##### Erro de listagem [código](https://github.com/Br-Endcraft/Mercado/blob/master/src/me/jonasxpx/mercado/VirtualChest.java#L58)
->Esta parte do código foi um problema pois não foi corretamente colocado, e ficou essa baguça ai.
+>Está parte do código foi um problema pois não foi corretamente colocado, e ficou essa baguça ai.
 Código antigo:
 ```java
 int count = 0;
@@ -24,7 +24,7 @@ int count = 0;
 			inv.setItem(count++, createFormatedItem(Mercado.getMercadoItens().get(x), false, player));
 		}
 ```
->Depois de bem pensado e reorganisado tudo foi resumido em algumas váriaveis para selecionar a pagina e a index da página, que foi desenvolvido em apenas um loop simples, e fáciu de entender.
+>Depois de bem pensado e reorganizado tudo foi resumido em algumas váriaveis para selecionar a página e a index da página, que foi desenvolvido em apenas um loop simples, e fácil de compreender.
 Novo código:
 ```java
 		/* Máximo de itens(46) multiplicado pela página */
