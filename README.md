@@ -11,8 +11,8 @@ Se resume em, venda e divulgação de itens por um invetário/bau virtual, onde 
  
 ## Alteração recente ##
  
-###### Erro de listagem
-
+##### Erro de listagem [código](https://github.com/Br-Endcraft/Mercado/blob/master/src/me/jonasxpx/mercado/VirtualChest.java#L58)
+>Esta parte do código foi um problema pois não foi corretamente colocado, e ficou essa baguça ai.
 Código antigo:
 ```java
 int count = 0;
@@ -24,10 +24,17 @@ int count = 0;
 			inv.setItem(count++, createFormatedItem(Mercado.getMercadoItens().get(x), false, player));
 		}
 ```
+>Depois de bem pensado e reorganisado tudo foi resumido em algumas váriaveis para selecionar a pagina e a index da página, que foi desenvolvido em apenas um loop simples, e fáciu de entender.
 Novo código:
 ```java
-  int maxpagina = page * maxitens;
+		/* Máximo de itens(46) multiplicado pela página */
+  		int maxpagina = page * maxitens;
+		
+		/* Qantidade de itens, para o loop. Sempre menor que a máxima de itens, 
+		   geralmente 46 slots menor que a máxima */
 		int count = (page - 1) * maxitens;
+		
+		/* Itens por página, gerencia cada slot, onde vai cada item */
 		int count_slot = 0;
 
 		
