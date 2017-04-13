@@ -1,0 +1,6 @@
+name: Mercado
+version: 0.0.5
+main: me.jonasxpx.mercado.Mercado
+commands:
+    mercado:
+        aliases: market
