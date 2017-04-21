@@ -4,6 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class Events implements Listener{
@@ -20,19 +21,17 @@ public class Events implements Listener{
 			if(e.getRawSlot() > e.getView().getTopInventory().getSize()){
 				return;
 			}
-			int page = Integer.parseInt(e.getInventory().getName().substring(11, 12));
+			int page = Integer.parseInt(e.getInventory().getName().replaceAll("[\\D]", ""));
 		
 			if(e.getCurrentItem().isSimilar(VirtualChest.nextPage)){
 				//e.getView().close();
 				e.getView().getPlayer().openInventory(VirtualChest.newListInventory(++page, player));
-				System.out.println("Current next page");
 				return;
 			} else if(e.getCurrentItem().isSimilar(VirtualChest.previusPage)){
 				//e.getView().close();
 				e.getView().getPlayer().openInventory(VirtualChest.newListInventory(page == 1 ? 1 : --page, player));
-				System.out.println("Current before page");
 				return;
-			}			
+			}
 			
 			e.getView().close();
 			//OPEN NEW INVENTORY
@@ -92,4 +91,6 @@ public class Events implements Listener{
 		}
 		return -1;
 	}
+	
+	
 }
