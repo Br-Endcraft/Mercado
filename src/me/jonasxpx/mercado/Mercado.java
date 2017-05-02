@@ -30,6 +30,7 @@ public class Mercado extends JavaPlugin{
     public static ArrayList<Material> bannedItens = new ArrayList<>();
     public static HashMap<String, HashMap<String, String>> location = new HashMap<>();
     public static int currentMensages = 0;
+    public static double minAmount = 0;
     public static boolean geoPlayer;
     public static FileConfiguration lang;
     private static Mercado instance;
@@ -40,6 +41,7 @@ public class Mercado extends JavaPlugin{
 		getServer().getPluginManager().registerEvents(new Events(), this);
 		getCommand("mercado").setExecutor(new Commands());
 		file = getConfig();
+		loadConfig();
 		CachedMercado.loadCached(new File(getDataFolder(), "currentsellitens.dat"));
 		setupEconomy();
 		loadPageItens();
@@ -96,6 +98,14 @@ public class Mercado extends JavaPlugin{
 		VirtualChest.adminDelete = new ItemStack(Material.STICK);
 
 		VirtualChest.backItem = new ItemStack(Material.WOOL, 1, (short)2);
+	}
+	
+	private void loadConfig(){
+		if(!file.contains("DinheiroMinimo")){
+			file.set("DinheiroMinimo", 250000.0D);
+			saveConfig();
+		}
+		minAmount = file.getDouble("DinheiroMinimo");
 	}
 	
 	public static ItemStack getItem(RegionCodes rc, ItemType i){

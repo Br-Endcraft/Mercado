@@ -1,0 +1,23 @@
+name: Mercado
+version: 0.0.6
+main: me.jonasxpx.mercado.Mercado
+commands:
+    mercado:
+        aliases: market
+        description: |
+            Usado para abrir o mercado.
+            Também pode ser usado para abrir páginas especificas,
+            Como exemplo, a página 2, /mercado 2
+permissions:
+    mercado.*:
+        description: permite acesso completo ao sistema.
+        children:
+            mercado.vender: true
+            mercado.admin: true
+            mercado.nomoney: true
+    mercado.vender:
+        description: permite o jogador vender itens no mercado.
+        default: op
+    mercado.nomoney:
+        discription: permite o jogador vender sem conter dinheiro na conta.
+        default: op

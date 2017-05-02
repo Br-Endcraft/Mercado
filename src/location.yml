@@ -17,6 +17,7 @@ lang:
         cant_sell: '&cOps, o item não pode ser removido, porque já foi vendido.'
         removed: '&bItem Removido'
         seller_sell: '&bVocê vendeu um &f%item%&b para &f%buyer_name%&b por &f%price%c'
+        no_enough_money: '&cVocê não tem dinheiro suficiente para usar o mercado.'
     us:
         next_page: 'Next page'
         previus_page: 'Previus page'
@@ -35,3 +36,4 @@ lang:
         cant_sell: '&cOps, o item não pode ser removido, porque já foi vendido.'
         removed: '&bItem was removed'
         seller_sell: '&bYou sold a &f%item%&b to &f%buyer_name%&b for &f%price%c'
+        no_enough_money: '&cYou can not sell it, your money is not enough.'

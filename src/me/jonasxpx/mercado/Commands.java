@@ -1,5 +1,10 @@
 package me.jonasxpx.mercado;
 
+import static me.jonasxpx.mercado.Mercado.bannedItens;
+import static me.jonasxpx.mercado.Mercado.economy;
+import static me.jonasxpx.mercado.Mercado.getLanguageKey;
+import static me.jonasxpx.mercado.Mercado.minAmount;
+
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,10 +37,16 @@ public class Commands implements CommandExecutor{
 				}
 				try{
 					if(p.getItemInHand().getType() == Material.AIR){
-						p.sendMessage(Mercado.getLanguageKey(GeoAPI.getRegion(p), "hold_item"));
+						p.sendMessage(getLanguageKey(GeoAPI.getRegion(p), "hold_item"));
 						return true;
 					}
-					if(Mercado.bannedItens.contains(p.getItemInHand().getType())){
+					if(!p.hasPermission("mercado.nomoney")){
+						if(economy.getBalance(p) < minAmount && !p.hasPermission("mercado.admin")){
+							p.sendMessage(getLanguageKey(GeoAPI.getRegion(p), "no_enough_money"));
+							return true;
+						}
+					}
+					if(bannedItens.contains(p.getItemInHand().getType())){
 						p.sendMessage("§cEsse item não pode ser vendido no mercado.");
 						return true;
 					}
