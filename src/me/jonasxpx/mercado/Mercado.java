@@ -55,6 +55,7 @@ public class Mercado extends JavaPlugin{
 		bannedItens.add(Material.INK_SACK);
 		bannedItens.add(Material.GRASS);
 		bannedItens.add(Material.POTION);
+		bannedItens.add(Material.ENCHANTED_BOOK);
 		saveResource("location.yml", true);
 		//reloadConfig();
 		lang = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "location.yml"));
@@ -109,7 +110,11 @@ public class Mercado extends JavaPlugin{
 	}
 	
 	public static ItemStack getItem(RegionCodes rc, ItemType i){
-		HashMap<String, String> l = location.containsKey(rc.name().toLowerCase()) ? location.get(rc.name().toLowerCase()) : location.get(RegionCodes.US.name().toLowerCase());
+		HashMap<String, String> l;
+		if(rc != null)
+			l = location.containsKey(rc.name().toLowerCase()) ? location.get(rc.name().toLowerCase()) : location.get(RegionCodes.US.name().toLowerCase());
+		else 
+			l = location.get("br");	
 		ItemStack item = i.item;
 		ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName(i.prefix + l.get(i.lang_selector) + i.suffix);
@@ -126,6 +131,9 @@ public class Mercado extends JavaPlugin{
 	}
 	
 	public static String getLanguageKey(RegionCodes rc, String key){
+		if(rc == null){
+			rc = RegionCodes.BR;
+		}
 		HashMap<String, String> l = location.containsKey(rc.name().toLowerCase()) ? location.get(rc.name().toLowerCase()) : location.get(RegionCodes.US.name().toLowerCase());
 		if(!l.containsKey(key)){
 			return ("§f[LANG] erro, key: " + key);

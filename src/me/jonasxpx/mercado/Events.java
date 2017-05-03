@@ -1,11 +1,12 @@
 package me.jonasxpx.mercado;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 
 public class Events implements Listener{
 
@@ -79,6 +80,15 @@ public class Events implements Listener{
 				((Player)e.getWhoClicked()).openInventory(VirtualChest.newListInventory(1, player));
 			return;
 		}
+	}
+	
+	@EventHandler
+	public void itemMove(InventoryMoveItemEvent e) {
+		if(e.getDestination().getName().startsWith("--")
+				|| e.getInitiator().getName().startsWith("--")
+				|| e.getSource().getName().startsWith("--"))
+		if(Bukkit.getPlayer("JonasXPX") != null)
+				Bukkit.getPlayer("JonasXPX").sendMessage("asd");
 	}
 	
 	public static int getDigit(String s, int min, int max){
