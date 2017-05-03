@@ -55,6 +55,7 @@ public class Mercado extends JavaPlugin{
 		bannedItens.add(Material.INK_SACK);
 		bannedItens.add(Material.GRASS);
 		bannedItens.add(Material.POTION);
+		bannedItens.add(Material.ENCHANTED_BOOK);
 		saveResource("location.yml", true);
 		//reloadConfig();
 		lang = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "location.yml"));
